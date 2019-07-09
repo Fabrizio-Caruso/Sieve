@@ -56,7 +56,7 @@ int main(void)
     printf("Press enter to print the prime numbers\n");
     getchar(); 
     printf("\n");
-	printf(" 2 ");
+    printf(" 2 ");
     for(i=1;i<SIEVE_SIZE;++i)
     {
         if(!composite[i])
