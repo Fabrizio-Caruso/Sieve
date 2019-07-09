@@ -3,10 +3,11 @@
  
 #define RANGE 50000u
 #define SIEVE_SIZE (RANGE/2)
+#define ARRAY_SIZE (SIEVE_SIZE+2)
  
 typedef unsigned char uint_8;
  
-uint_8 composite[SIEVE_SIZE+1];
+uint_8 composite[ARRAY_SIZE];
  
 int main(void)
 {
@@ -17,7 +18,7 @@ int main(void)
     unsigned int i = 3;
     unsigned int j = 0;
 
-    for(j=0;j<SIEVE_SIZE;++j)
+    for(j=0;j<ARRAY_SIZE;++j)
     {
         composite[j]=0;
     }
