@@ -5,7 +5,7 @@
  
 typedef unsigned char uint_8;
  
-uint_8 sieve[SIEVE_SIZE];
+uint_8 sieve[SIEVE_SIZE+1];
  
 int main(void)
 {
@@ -13,7 +13,7 @@ int main(void)
     unsigned int Sec;
     unsigned int Milli;	
 	
-    unsigned int i = 2;
+    unsigned int i = 3;
     unsigned int j = 0;
 
 	for(j=0;j<SIEVE_SIZE;++j)
@@ -31,10 +31,10 @@ int main(void)
         {
             sieve[j]=1;
         }
-		++i;
+		i+=2;
         while(sieve[i])
         {
-			++i;
+			i+=2;
         }
     }
     TicksDelta = clock() - Ticks;
@@ -42,7 +42,7 @@ int main(void)
     Milli = ((TicksDelta % CLOCKS_PER_SEC) * 1000) / CLOCKS_PER_SEC;
     printf ("Time used: %u.%03u seconds = %u ticks\n", Sec, Milli, (unsigned short) TicksDelta);    
      	
-    printf("Press enter to print the triples\n");
+    printf("Press enter to print the prime numbers\n");
     getchar(); 
     printf("\n");
 	printf(" 2 ");
