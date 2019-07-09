@@ -28,13 +28,10 @@ int main(void)
     Ticks = clock();
     while(i<2*SIEVE_SIZE)
     {
-        // getchar();
-        // printf("i : %u is prime; index at %u\n", i, i>>1);
         for(j=i*2;j<2*SIEVE_SIZE;j+=i)
         {
             if(j&1)
             {
-                // printf("j: %u is composite; index at %u\n", j, j>>1);
                 composite[j>>1]=1;
             }
         }
