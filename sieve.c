@@ -5,7 +5,7 @@
  
 typedef unsigned char uint_8;
  
-uint_8 sieve[SIEVE_SIZE] = { 0 };
+uint_8 sieve[SIEVE_SIZE];
  
 int main(void)
 {
@@ -16,6 +16,11 @@ int main(void)
     unsigned int i = 2;
     unsigned int j = 0;
 
+	for(j=0;j<SIEVE_SIZE;++j)
+	{
+		sieve[j]=0;
+	}
+	
     printf("\nPress enter to start\n");
     getchar();
     printf("\nComputing...\n"); 
@@ -26,8 +31,10 @@ int main(void)
         {
             sieve[j]=1;
         }
-        while(!(sieve[i++])&&(i<SIEVE_SIZE))
+		++i;
+        while(sieve[i])
         {
+			++i;
         }
     }
     TicksDelta = clock() - Ticks;
