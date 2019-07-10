@@ -8,7 +8,6 @@ typedef unsigned char uint_8;
 uint_8 composite[SIEVE_SIZE+1];
 uint_8 *primePtr;
 uint_8 *compositePtr;
-uint_8 *beginPtr;
 uint_8 *boundPtr;
 uint_8 *endPtr;
 
@@ -44,7 +43,6 @@ int main(void)
 
 
     bound = 1+babylonian(SIEVE_SIZE);
-    beginPtr = composite;
     boundPtr = &composite[bound];
     endPtr = &composite[SIEVE_SIZE];
     
@@ -76,7 +74,7 @@ int main(void)
 			++primePtr;
             ++primePtr;
         }
-        i = primePtr - beginPtr;
+        i = primePtr - composite;
     }
     TicksDelta = clock() - Ticks;
     Sec = (unsigned short) (TicksDelta / CLOCKS_PER_SEC);

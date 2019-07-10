@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <time.h>
  
-#define SIEVE_SIZE 5000
+#define SIEVE_SIZE 20000
  
 typedef unsigned char uint_8;
  
-uint_8 sieve[SIEVE_SIZE+1];
+uint_8 composite[SIEVE_SIZE+1];
  
 unsigned int babylonian(unsigned int n)
 {
@@ -38,7 +38,7 @@ int main(void)
 
 	for(j=0;j<SIEVE_SIZE;++j)
 	{
-		sieve[j]=0;
+		composite[j]=0;
 	}
 	
     printf("\nPress enter to start\n");
@@ -49,10 +49,10 @@ int main(void)
     {
         for(j=i*2;j<SIEVE_SIZE;j+=i)
         {
-            sieve[j]=1;
+            composite[j]=1;
         }
 		i+=2;
-        while(sieve[i])
+        while(composite[i])
         {
 			i+=2;
         }
@@ -68,7 +68,7 @@ int main(void)
 	printf(" 2 ");
     for(i=3;i<SIEVE_SIZE;i+=2)
     {
-        if(!sieve[i])
+        if(!composite[i])
         {
              printf(" %u ", i);
         }
