@@ -8,6 +8,20 @@
 typedef unsigned char uint_8;
  
 uint_8 composite[ARRAY_SIZE];
+
+unsigned int babylonian(unsigned int n)
+{
+    unsigned int x,y;
+    
+    x = n;
+    y = 1;
+    while(x>y)
+    {
+        x = (x+y)>>1;
+        y = n/x;
+    }
+    return x;
+}
  
 int main(void)
 {
@@ -15,8 +29,14 @@ int main(void)
     unsigned int Sec;
     unsigned int Milli; 
     
+    unsigned int bound;
     unsigned int i = 3;
     unsigned int j = 0;
+
+    bound = 1+babylonian(RANGE);
+    
+    printf("\nrange: %u\n", RANGE);
+    printf("bound: %u\n", bound);
 
     for(j=0;j<ARRAY_SIZE;++j)
     {
@@ -27,9 +47,9 @@ int main(void)
     getchar();
     printf("\nComputing...\n"); 
     Ticks = clock();
-    while(i<2*SIEVE_SIZE)
+    while(i<bound)
     {
-        for(j=i*2;j<2*SIEVE_SIZE;j+=i)
+        for(j=i*2;j<RANGE;j+=i)
         {
             if(j&1)
             {
