@@ -5,7 +5,7 @@
  
 typedef unsigned char uint_8;
  
-uint_8 composite[SIEVE_SIZE+1];
+uint_8 composite[SIEVE_SIZE+2] = { 0 };
 uint_8 *primePtr;
 uint_8 *compositePtr;
 uint_8 *boundPtr;
@@ -25,6 +25,27 @@ unsigned int babylonian(unsigned int n)
     return x;
 }
  
+void display_primes(void)
+{
+    unsigned int i,j;
+    
+    printf("Press enter to print the prime numbers\n");
+    getchar(); 
+    printf("\n");
+	printf(" 2 ");
+    j = 1;
+    for(i=3;i<SIEVE_SIZE;i+=2)
+    {
+        if(!composite[i])
+        {
+             printf(" %u ", i);
+             ++j;
+        }
+    }
+    printf("\n");
+    printf("\n Primes found: %u\n", j);    
+}    
+ 
 int main(void)
 {
     clock_t Ticks, TicksDelta;
@@ -41,18 +62,12 @@ int main(void)
     ++primePtr;
     compositePtr = composite;
 
-
     bound = 1+babylonian(SIEVE_SIZE);
     boundPtr = &composite[bound];
     endPtr = &composite[SIEVE_SIZE];
     
     printf("\nrange: %u\n", SIEVE_SIZE);
     printf("bound: %u\n", bound);
-
-	for(j=0;j<SIEVE_SIZE;++j)
-	{
-		composite[j]=0;
-	}
 	
     printf("\nPress enter to start\n");
     getchar();
@@ -81,21 +96,7 @@ int main(void)
     Milli = ((TicksDelta % CLOCKS_PER_SEC) * 1000) / CLOCKS_PER_SEC;
     printf ("Time used: %u.%03u seconds = %u ticks\n", Sec, Milli, (unsigned short) TicksDelta);    
      	
-    printf("Press enter to print the prime numbers\n");
-    getchar(); 
-    printf("\n");
-	printf(" 2 ");
-    j = 1;
-    for(i=3;i<SIEVE_SIZE;i+=2)
-    {
-        if(!composite[i])
-        {
-             printf(" %u ", i);
-             ++j;
-        }
-    }
-    printf("\n");
-    printf("\n Primes found: %u\n", j);
+    display_primes();
  
     return 0;
 }
