@@ -1,49 +1,15 @@
 #include <stdio.h>
 #include <time.h>
  
-#define RANGE 50000u
-#define SIEVE_SIZE (RANGE/2)
-#define ARRAY_SIZE (SIEVE_SIZE+2)
+#include "definitions.h"
  
 typedef unsigned char uint_8;
  
 uint_8 composite[ARRAY_SIZE] = { 0 };
 
-unsigned int babylonian(unsigned int n)
-{
-    unsigned int x,y;
-    
-    x = n;
-    y = 1;
-    while(x>y)
-    {
-        x = (x+y)>>1;
-        y = n/x;
-    }
-    return x;
-}
+unsigned int babylonian(unsigned int n);
  
- 
-void display_primes(void)
-{
-    unsigned int i,j;
-    
-    printf("Press enter to print the prime numbers\n");
-    getchar(); 
-    printf("\n");
-	printf(" 2 ");
-    j = 1;
-    for(i=3;i<SIEVE_SIZE;i+=2)
-    {
-        if(!composite[i])
-        {
-             printf(" %u ", i);
-             ++j;
-        }
-    }
-    printf("\n");
-    printf("\n Primes found: %u\n", j);    
-}    
+void display_primes(void);
   
  
 int main(void)
