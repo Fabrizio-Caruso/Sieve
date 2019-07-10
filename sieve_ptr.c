@@ -15,15 +15,15 @@ unsigned int babylonian(unsigned int n);
 
 void display_primes(void);
  
+clock_t Ticks, TicksDelta;
+unsigned int Sec;
+unsigned int Milli;	
+
+unsigned int bound;
+unsigned int i = 3;
+    
 int main(void)
 {
-    clock_t Ticks, TicksDelta;
-    unsigned int Sec;
-    unsigned int Milli;	
-	
-    unsigned int bound;
-    unsigned int i = 3;
-    unsigned int j = 0;
     
     primePtr = composite;
     ++primePtr;

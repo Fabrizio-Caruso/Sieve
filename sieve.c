@@ -2,6 +2,18 @@
 #include <time.h> 
  
 #include "definitions.h"
+
+#if defined(EXTERN_VARS)
+    #define __EXTERN extern
+    #include "extern_vars.h"
+#else 
+    #define __EXTERN
+#endif
+
+__EXTERN unsigned int bound;
+__EXTERN unsigned int i;
+__EXTERN unsigned int j;
+ 
  
 typedef unsigned char uint_8;
  
@@ -11,17 +23,14 @@ unsigned int babylonian(unsigned int n);
  
 void display_primes(void);
 
+clock_t Ticks, TicksDelta;
+unsigned int Sec;
+unsigned int Milli; 
+
 int main(void)
 {
-    clock_t Ticks, TicksDelta;
-    unsigned int Sec;
-    unsigned int Milli; 
-    
-    unsigned int bound;
-    unsigned int i = 3;
-    unsigned int j = 0;
-
     bound = 1+babylonian(SIEVE_SIZE);
+    i = 3;
     
     printf("\nrange: %u\n", SIEVE_SIZE);
     printf("bound: %u\n", bound);

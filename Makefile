@@ -25,17 +25,25 @@ c64_sieve:
 	cl65$(EXEEXT) -t c64 -O --codesize 800 -Cl sieve.c babylonian.c display_primes.c -o $(BUILD_PATH)/sieve.prg
 	rm sieve.o
 	rm babylonian.o
-
+	rm display_primes.o
+    
+c64_sieve_zp:
+	cl65$(EXEEXT) -t c64 -O --codesize 800 -DEXTERN_VARS -Cl sieve.c babylonian.c display_primes.c extern_c64_vars.s -o $(BUILD_PATH)/sieve_zp.prg
+	rm sieve.o
+	rm babylonian.o
+	rm display_primes.o
+    
 c64_sieve_ptr:
 	cl65$(EXEEXT) -t c64 -O --codesize 800 -Cl sieve_ptr.c babylonian.c display_primes.c -o $(BUILD_PATH)/sieve_ptr.prg
 	rm sieve_ptr.o
 	rm babylonian.o
-
+	rm display_primes.o
+    
 c64_sieve_compressed:
 	cl65$(EXEEXT) -t c64 -O --codesize 800 -Cl -DCOMPRESSED sieve_compressed.c babylonian.c display_primes.c -o $(BUILD_PATH)/sieve_compressed.prg
 	rm sieve_compressed.o
 	rm babylonian.o
-
+	rm display_primes.o
 
 # 	
 all: c64_sieve c64_sieve_ptr c64_sieve_compressed
