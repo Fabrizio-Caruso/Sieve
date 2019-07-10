@@ -1,11 +1,25 @@
 #include <stdio.h>
 #include <time.h>
  
-#define SIEVE_SIZE 500
+#define SIEVE_SIZE 5000
  
 typedef unsigned char uint_8;
  
 uint_8 sieve[SIEVE_SIZE+1];
+ 
+unsigned int babylonian(unsigned int n)
+{
+    unsigned int x,y;
+    
+    x = n;
+    y = 1;
+    while(x>y)
+    {
+        x = (x+y)>>1;
+        y = n/x;
+    }
+    return x;
+}
  
 int main(void)
 {
@@ -13,8 +27,14 @@ int main(void)
     unsigned int Sec;
     unsigned int Milli;	
 	
+    unsigned int bound;
     unsigned int i = 3;
     unsigned int j = 0;
+
+    bound = 1+babylonian(SIEVE_SIZE);
+    
+    printf("\nrange: %u\n", SIEVE_SIZE);
+    printf("bound: %u\n", bound);
 
 	for(j=0;j<SIEVE_SIZE;++j)
 	{
@@ -25,7 +45,7 @@ int main(void)
     getchar();
     printf("\nComputing...\n"); 
 	Ticks = clock();
-    while(i<SIEVE_SIZE)
+    while(i<bound)
     {
         for(j=i*2;j<SIEVE_SIZE;j+=i)
         {

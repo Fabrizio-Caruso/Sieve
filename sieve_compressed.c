@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
  
-#define RANGE 50000u
+#define RANGE 5000u
 #define SIEVE_SIZE (RANGE/2)
 #define ARRAY_SIZE (SIEVE_SIZE+2)
  
