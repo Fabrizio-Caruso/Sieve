@@ -17,7 +17,7 @@ __EXTERN unsigned int j;
  
 typedef unsigned char uint_8;
  
-uint_8 composite[SIEVE_SIZE+2] = { 0 };
+uint_8 composite[ARRAY_SIZE] = { 0 };
  
 unsigned int babylonian(unsigned int n);
  

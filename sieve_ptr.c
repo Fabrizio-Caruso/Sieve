@@ -5,7 +5,7 @@
  
 typedef unsigned char uint_8;
  
-uint_8 composite[SIEVE_SIZE+2] = { 0 };
+uint_8 composite[ARRAY_SIZE] = { 0 };
 uint_8 *primePtr;
 uint_8 *compositePtr;
 uint_8 *boundPtr;
