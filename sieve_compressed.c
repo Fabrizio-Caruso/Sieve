@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
  
-#define RANGE 5000u
+#define RANGE 50000u
 #define SIEVE_SIZE (RANGE/2)
 #define ARRAY_SIZE (SIEVE_SIZE+2)
  
@@ -56,10 +56,10 @@ int main(void)
                 composite[j>>1]=1;
             }
         }
-        i+=1;
+        ++i;
         while(composite[i>>1])
         {
-            i+=1;
+            ++i;
         }
         if(!(i&1))
         {
