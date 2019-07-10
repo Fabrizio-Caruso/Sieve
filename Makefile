@@ -46,7 +46,7 @@ c64_sieve_compressed:
 	rm display_primes.o
 
 # 	
-all: c64_sieve c64_sieve_ptr c64_sieve_compressed
+all: c64_sieve_zp c64_sieve c64_sieve_ptr c64_sieve_compressed
 	
 clean:
 	rm -rf *$(COMPILEDEXT)
