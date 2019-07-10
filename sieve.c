@@ -4,15 +4,13 @@
 #include "definitions.h"
 
 #if defined(EXTERN_VARS)
-    #define __EXTERN extern
     #include "extern_vars.h"
 #else 
-    #define __EXTERN
+    unsigned int bound;
+    unsigned int i;
+    unsigned int j;
 #endif
 
-__EXTERN unsigned int bound;
-__EXTERN unsigned int i;
-__EXTERN unsigned int j;
  
  
 typedef unsigned char uint_8;
