@@ -21,6 +21,12 @@ BUILD_PATH ?= ./build
 	
 ## C64 targets
 
+c64_sieve_ex:
+	cl65$(EXEEXT) -t c64 -O --codesize 800 -Cl sieve_ex.c babylonian.c display_primes.c -o $(BUILD_PATH)/sieve_ex.prg
+	rm sieve_ex.o
+	rm babylonian.o
+	rm display_primes.o
+
 c64_sieve:
 	cl65$(EXEEXT) -t c64 -O --codesize 800 -Cl sieve.c babylonian.c display_primes.c -o $(BUILD_PATH)/sieve.prg
 	rm sieve.o
@@ -46,7 +52,7 @@ c64_sieve_compressed:
 	rm display_primes.o
 
 # 	
-all: c64_sieve_zp c64_sieve c64_sieve_ptr c64_sieve_compressed
+all: c64_sieve_zp c64_sieve_ex c64_sieve c64_sieve_ptr c64_sieve_compressed
 	
 clean:
 	rm -rf *$(COMPILEDEXT)
