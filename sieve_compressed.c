@@ -40,14 +40,10 @@ int main(void)
                 composite[j>>1]=1;
             }
         }
-        ++i;
+        i+=2;
         while(composite[i>>1])
         {
-            ++i;
-        }
-        if(!(i&1))
-        {
-            ++i;
+            i+=2;
         }
     }
     TicksDelta = clock() - Ticks;
