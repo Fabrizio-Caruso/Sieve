@@ -17,7 +17,9 @@ endif
 
 BUILD_PATH ?= ./build
 
-
+## vbcc
+vbcc_sieve:
+	vc$(EXEEXT) +c64 -O4 sieve.c babylonian.c display_primes.c -o $(BUILD_PATH)/sieve.prg
 	
 ## C64 targets
 
@@ -34,7 +36,8 @@ c64_sieve:
 	rm display_primes.o
     
 c64_sieve_zp:
-	cl65$(EXEEXT) -t c64 -O --codesize 800 -DEXTERN_VARS -Cl sieve.c babylonian.c display_primes.c extern_c64_vars.s -o $(BUILD_PATH)/sieve_zp.prg
+	cl65$(EXEEXT) -t c64 -O --codesize 800 -Cl \
+	-DEXTERN_VARS sieve.c babylonian.c display_primes.c extern_c64_vars.s -o $(BUILD_PATH)/sieve_zp.prg
 	rm sieve.o
 	rm babylonian.o
 	rm display_primes.o
@@ -46,7 +49,9 @@ c64_sieve_ptr:
 	rm display_primes.o
     
 c64_sieve_compressed:
-	cl65$(EXEEXT) -t c64 -O --codesize 800 -Cl -DCOMPRESSED sieve_compressed.c babylonian.c display_primes.c -o $(BUILD_PATH)/sieve_compressed.prg
+	cl65$(EXEEXT) -t c64 -O --codesize 800 -Cl \
+	-DEXTERN_VARS -DCOMPRESSED \
+	sieve_compressed.c babylonian.c display_primes.c extern_c64_vars.s -o $(BUILD_PATH)/sieve_compressed.prg
 	rm sieve_compressed.o
 	rm babylonian.o
 	rm display_primes.o

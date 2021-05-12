@@ -1,19 +1,7 @@
 #include <stdio.h>
-#include <time.h>
+#include <time.h> 
  
 #include "definitions.h"
- 
-typedef unsigned char uint_8;
- 
-uint_8 composite[ARRAY_SIZE] = { 0 };
-
-unsigned int babylonian(unsigned int n);
- 
-void display_primes(void);
-
-clock_t Ticks, TicksDelta;
-unsigned int Sec;
-unsigned int Milli; 
 
 #if defined(EXTERN_VARS)
     #include "extern_vars.h"
@@ -24,13 +12,25 @@ unsigned int Milli;
 #endif
 
  
+ 
+typedef unsigned char uint_8;
+ 
+uint_8 composite[ARRAY_SIZE] = { 0 };
+ 
+unsigned int babylonian(unsigned int n);
+ 
+void display_primes(void);
+
+clock_t Ticks, TicksDelta;
+unsigned int Sec;
+unsigned int Milli; 
+
 int main(void)
 {
+    bound = 1+babylonian(SIEVE_SIZE);
     i = 3;
-
-    bound = 1+babylonian(RANGE);
     
-    printf("\nrange: %u\n", RANGE);
+    printf("\nrange: %u\n", SIEVE_SIZE);
     printf("bound: %u\n", bound);
     
     printf("\nPress enter to start\n");
@@ -39,15 +39,12 @@ int main(void)
     Ticks = clock();
     while(i<bound)
     {
-        for(j=i*2;j<RANGE;j+=i)
+        for(j=i*2;j<SIEVE_SIZE;j+=i)
         {
-            if(j&1)
-            {
-                composite[j>>1]=1;
-            }
+            composite[j]=1;
         }
         i+=2;
-        while(composite[i>>1])
+        while(composite[i])
         {
             i+=2;
         }
